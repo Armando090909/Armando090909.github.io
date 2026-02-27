@@ -19,93 +19,93 @@
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; justify-content: space-between; align-items: center; padding: 26px 52px; background: linear-gradient(to bottom, rgba(8,8,8,0.97) 0%, transparent 100%); }
     .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 17px; font-weight: 300; letter-spacing: 0.14em; color: var(--muted); text-decoration: none; text-transform: uppercase; transition: color 0.3s; }
     .nav-logo:hover { color: var(--text); }
-    .nav-links { display: flex; gap: 38px; list-style: none; align-items: center; }
+    .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
     .nav-links a { color: var(--muted); text-decoration: none; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; transition: color 0.3s; }
     .nav-links a:hover { color: var(--text); }
     .lang-toggle { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--border); padding: 6px 14px; background: none; transition: all 0.3s; cursor: pointer; }
     .lang-toggle:hover { color: var(--text); border-color: rgba(232,228,220,0.3); }
-    .hero-banner { position: relative; width: 100%; aspect-ratio: 16/7; overflow: hidden; background: #0a0a0a; }
-    .hero-banner iframe { position: absolute; top: 50%; left: 50%; width: 110%; height: 110%; transform: translate(-50%,-50%); border: none; pointer-events: none; }
-    .hero-banner-veil { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(8,8,8,0.25) 0%, rgba(8,8,8,0.1) 50%, rgba(8,8,8,0.7) 85%, rgba(8,8,8,1) 100%); z-index: 1; }
-    .hero-banner-top { position: absolute; top: 0; left: 0; right: 0; height: 120px; background: linear-gradient(to bottom, rgba(8,8,8,0.6) 0%, transparent 100%); z-index: 2; }
-    .hero-identity { padding: 48px 52px 72px; background: var(--black); }
-    .hero-name { font-family: 'Cormorant Garamond', serif; font-size: clamp(48px, 6.5vw, 88px); font-weight: 300; line-height: 0.9; letter-spacing: -0.01em; color: var(--text); margin-bottom: 28px; }
-    .hero-meta { display: flex; align-items: center; gap: 28px; }
-    .hero-rule { width: 40px; height: 1px; background: var(--muted); flex-shrink: 0; }
+    .hero-banner { position: relative; width: 100%; aspect-ratio: 4/1; overflow: hidden; background: #0a0a0a; }
+    .hero-banner iframe { position: absolute; top: 50%; left: 50%; width: 120%; height: 120%; transform: translate(-50%,-50%); border: none; pointer-events: none; }
+    .hero-banner-veil { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(8,8,8,0.2) 0%, rgba(8,8,8,0.05) 40%, rgba(8,8,8,0.6) 85%, rgba(8,8,8,1) 100%); z-index: 1; }
+    .hero-banner-top { position: absolute; top: 0; left: 0; right: 0; height: 100px; background: linear-gradient(to bottom, rgba(8,8,8,0.7) 0%, transparent 100%); z-index: 2; }
+    .hero-identity { padding: 40px 52px 60px; background: var(--black); text-align: center; }
+    .hero-name { font-family: 'Cormorant Garamond', serif; font-size: clamp(42px, 5.5vw, 80px); font-weight: 300; line-height: 1; letter-spacing: 0.08em; color: var(--text); white-space: nowrap; }
+    .hero-meta { display: flex; align-items: center; justify-content: center; gap: 20px; margin-top: 18px; }
+    .hero-rule { width: 32px; height: 1px; background: var(--muted); flex-shrink: 0; }
     .hero-label { font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--muted); }
-    .hero-sub { font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(232,228,220,0.25); margin-top: 14px; padding-left: 68px; }
-    section { padding: 100px 52px; }
-    .section-header { display: flex; align-items: baseline; gap: 20px; margin-bottom: 60px; }
-    .section-number { font-family: 'Cormorant Garamond', serif; font-size: 12px; color: var(--muted); letter-spacing: 0.1em; }
-    .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(26px, 3vw, 44px); font-weight: 300; letter-spacing: 0.02em; color: var(--text); }
-    .section-line { flex: 1; height: 1px; background: var(--border); margin-left: 20px; }
-    #portfolio { background: var(--black); }
-    .filter-bar { display: flex; gap: 8px; margin-bottom: 44px; flex-wrap: wrap; }
-    .filter-btn { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); background: none; border: 1px solid var(--border); padding: 8px 18px; transition: all 0.25s; cursor: pointer; }
-    .filter-btn:hover, .filter-btn.active { color: var(--text); border-color: rgba(232,228,220,0.3); background: var(--accent-dim); }
-    .demo-banner { display: none; margin-bottom: 28px; position: relative; aspect-ratio: 16/6; overflow: hidden; background: var(--surface); }
-    .demo-banner.visible { display: block; }
-    .demo-banner iframe { width: 100%; height: 100%; border: none; }
-    .demo-banner-label { position: absolute; top: 18px; left: 24px; font-size: 9px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--muted); z-index: 2; background: rgba(8,8,8,0.65); padding: 5px 11px; }
-    .video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+    .hero-sub { font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(232,228,220,0.22); margin-top: 10px; }
+    .cat-section { padding: 80px 52px; }
+    .cat-section:nth-child(odd) { background: var(--black); }
+    .cat-section:nth-child(even) { background: var(--deep); }
+    .cat-header { display: flex; align-items: baseline; gap: 20px; margin-bottom: 48px; }
+    .cat-number { font-family: 'Cormorant Garamond', serif; font-size: 12px; color: var(--muted); letter-spacing: 0.1em; }
+    .cat-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 3.5vw, 48px); font-weight: 300; letter-spacing: 0.02em; color: var(--text); }
+    .cat-line { flex: 1; height: 1px; background: var(--border); margin-left: 20px; }
+    .featured-reel { margin: 0 auto 40px; position: relative; aspect-ratio: 16/7; overflow: hidden; background: var(--surface); max-width: 960px; }
+    .featured-reel iframe { width: 100%; height: 100%; border: none; }
+    .featured-reel-label { position: absolute; top: 18px; left: 24px; font-size: 9px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--muted); z-index: 2; background: rgba(8,8,8,0.7); padding: 5px 12px; }
+    .video-mosaic { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
     .video-item { position: relative; aspect-ratio: 16/9; overflow: hidden; background: var(--surface); cursor: pointer; }
-    .video-item:first-child { grid-column: span 2; }
-    .video-thumb { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94), filter 0.5s ease; filter: brightness(0.6) saturate(0.7); }
-    .video-item:hover .video-thumb { transform: scale(1.06); filter: brightness(0.38) saturate(0.5); }
-    .video-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 22px; background: linear-gradient(to top, rgba(8,8,8,0.88) 0%, transparent 55%); opacity: 0; transition: opacity 0.4s ease; }
-    .video-item:hover .video-overlay { opacity: 1; }
-    .video-category { font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted); margin-bottom: 5px; }
-    .video-title { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 300; line-height: 1.2; color: var(--text); }
-    .video-play { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%) scale(0.8); width: 50px; height: 50px; border: 1px solid rgba(255,255,255,0.45); border-radius: 50%; display: flex; align-items: center; justify-content: center; opacity: 0; transition: all 0.3s ease; }
-    .video-play svg { margin-left: 3px; }
-    .video-item:hover .video-play { opacity: 1; transform: translate(-50%,-50%) scale(1); }
+    .video-thumb { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94), filter 0.4s ease; filter: brightness(0.55) saturate(0.7); }
+    .video-item:hover .video-thumb { transform: scale(1.07); filter: brightness(0.28) saturate(0.5); }
+    .video-info { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 14px 16px; background: linear-gradient(to top, rgba(8,8,8,0.95) 0%, rgba(8,8,8,0.3) 50%, transparent 100%); opacity: 0; transition: opacity 0.35s ease; }
+    .video-item:hover .video-info { opacity: 1; }
+    .video-info-title { font-family: 'Cormorant Garamond', serif; font-size: 15px; font-weight: 300; color: var(--text); line-height: 1.2; margin-bottom: 3px; }
+    .video-info-director { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); }
+    .video-play-icon { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%) scale(0.85); width: 44px; height: 44px; border: 1px solid rgba(255,255,255,0.4); border-radius: 50%; display: flex; align-items: center; justify-content: center; opacity: 0; transition: all 0.3s ease; }
+    .video-play-icon svg { margin-left: 3px; }
+    .video-item:hover .video-play-icon { opacity: 1; transform: translate(-50%,-50%) scale(1); }
     .lightbox { position: fixed; inset: 0; background: rgba(0,0,0,0.97); z-index: 1000; display: none; align-items: center; justify-content: center; flex-direction: column; }
     .lightbox.open { display: flex; }
-    .lightbox-close { position: absolute; top: 30px; right: 38px; font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted); background: none; border: none; cursor: pointer; transition: color 0.2s; }
+    .lightbox-close { position: absolute; top: 28px; right: 36px; font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted); background: none; border: none; cursor: pointer; transition: color 0.2s; }
     .lightbox-close:hover { color: var(--text); }
     .lightbox-video { width: 90vw; max-width: 1100px; aspect-ratio: 16/9; }
     .lightbox-video iframe { width: 100%; height: 100%; border: none; }
-    .lightbox-title { font-family: 'Cormorant Garamond', serif; font-size: 19px; font-weight: 300; margin-top: 18px; color: var(--muted); letter-spacing: 0.05em; }
-    #bio { background: var(--deep); }
+    .lightbox-meta { margin-top: 16px; text-align: center; }
+    .lightbox-title { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 300; color: var(--text); letter-spacing: 0.05em; }
+    .lightbox-director { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
+    #bio { background: var(--surface); padding: 80px 52px; }
     .bio-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: 80px; align-items: start; }
     .bio-image-wrap { position: relative; }
     .bio-image { width: 100%; aspect-ratio: 3/4; object-fit: cover; filter: grayscale(20%) brightness(0.82); }
     .bio-image-frame { position: absolute; top: 18px; left: 18px; right: -18px; bottom: -18px; border: 1px solid var(--border); z-index: -1; }
     .bio-text h3 { font-family: 'Cormorant Garamond', serif; font-size: 11px; font-weight: 400; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted); margin-bottom: 26px; }
     .bio-text p { color: rgba(232,228,220,0.68); line-height: 1.9; margin-bottom: 16px; font-size: 15px; }
-    #awards { background: var(--black); }
+    #awards { background: var(--black); padding: 80px 52px; }
+    .section-header { display: flex; align-items: baseline; gap: 20px; margin-bottom: 48px; }
     .awards-list { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
-    .award-item { padding: 32px 36px; background: var(--surface); border-left: 2px solid transparent; transition: all 0.3s ease; position: relative; overflow: hidden; }
+    .award-item { padding: 30px 34px; background: var(--surface); border-left: 2px solid transparent; transition: all 0.3s ease; position: relative; overflow: hidden; }
     .award-item::before { content: ''; position: absolute; inset: 0; background: var(--accent-dim); opacity: 0; transition: opacity 0.3s; }
     .award-item:hover { border-left-color: rgba(232,228,220,0.35); }
     .award-item:hover::before { opacity: 1; }
-    .award-year { font-size: 10px; letter-spacing: 0.25em; color: var(--muted); text-transform: uppercase; margin-bottom: 9px; position: relative; }
-    .award-title { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 300; margin-bottom: 6px; position: relative; color: var(--text); }
-    .award-desc { font-size: 13px; color: var(--muted); line-height: 1.55; position: relative; }
-    #contact { background: var(--deep); }
+    .award-year { font-size: 10px; letter-spacing: 0.25em; color: var(--muted); text-transform: uppercase; margin-bottom: 8px; position: relative; }
+    .award-title { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 300; margin-bottom: 5px; position: relative; color: var(--text); }
+    .award-desc { font-size: 13px; color: var(--muted); line-height: 1.5; position: relative; }
+    #contact { background: var(--deep); padding: 80px 52px; }
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
     .contact-intro { font-family: 'Cormorant Garamond', serif; font-size: clamp(24px, 3vw, 40px); font-weight: 300; line-height: 1.25; color: var(--text); }
-    .contact-item { display: flex; align-items: baseline; gap: 20px; padding: 20px 0; border-bottom: 1px solid var(--border); }
+    .contact-item { display: flex; align-items: baseline; gap: 20px; padding: 18px 0; border-bottom: 1px solid var(--border); }
     .contact-label { font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted); min-width: 68px; }
     .contact-value a, .contact-value { color: var(--text); text-decoration: none; font-size: 15px; transition: color 0.2s; }
     .contact-value a:hover { color: var(--accent); }
-    .contact-vimeo { display: inline-flex; align-items: center; gap: 12px; margin-top: 36px; padding: 14px 26px; border: 1px solid var(--border); color: var(--muted); text-decoration: none; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; transition: all 0.3s; }
+    .contact-vimeo { display: inline-flex; align-items: center; gap: 12px; margin-top: 32px; padding: 13px 24px; border: 1px solid var(--border); color: var(--muted); text-decoration: none; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; transition: all 0.3s; }
     .contact-vimeo:hover { border-color: rgba(232,228,220,0.3); color: var(--text); background: var(--accent-dim); }
-    footer { padding: 34px 52px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+    footer { padding: 30px 52px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
     .footer-name { font-family: 'Cormorant Garamond', serif; font-size: 14px; letter-spacing: 0.1em; color: var(--muted); }
     .footer-copy { font-size: 11px; color: rgba(232,228,220,0.18); letter-spacing: 0.1em; }
-    .fade-up { opacity: 0; transform: translateY(26px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .fade-up.visible { opacity: 1; transform: translateY(0); }
+    @media (max-width: 1100px) { .video-mosaic { grid-template-columns: repeat(3, 1fr); } }
     @media (max-width: 900px) {
-      nav { padding: 20px 24px; } .nav-links { gap: 20px; } section { padding: 72px 24px; }
-      .hero-identity { padding: 36px 24px 56px; } .hero-sub { padding-left: 0; margin-top: 10px; }
-      .video-grid { grid-template-columns: 1fr 1fr; } .video-item:first-child { grid-column: span 2; }
-      .bio-grid, .contact-grid, .awards-list { grid-template-columns: 1fr; gap: 36px; }
-      footer { padding: 24px; flex-direction: column; gap: 10px; text-align: center; }
+      nav { padding: 18px 24px; } .nav-links { gap: 16px; }
+      .hero-identity { padding: 32px 24px 48px; } .hero-name { white-space: normal; }
+      .cat-section, #bio, #awards, #contact { padding: 60px 24px; }
+      .video-mosaic { grid-template-columns: repeat(2, 1fr); }
+      .bio-grid, .contact-grid, .awards-list { grid-template-columns: 1fr; gap: 32px; }
+      footer { padding: 22px 24px; flex-direction: column; gap: 8px; text-align: center; }
     }
     @media (max-width: 600px) {
-      .nav-links { display: none; } .hero-banner { aspect-ratio: 16/9; }
-      .video-grid { grid-template-columns: 1fr; } .video-item:first-child { grid-column: span 1; }
+      .nav-links { display: none; } .hero-banner { aspect-ratio: 3/1; } .featured-reel { aspect-ratio: 16/9; }
     }
   </style>
 </head>
@@ -113,64 +113,166 @@
   <nav>
     <a href="#" class="nav-logo">Alexandre Lampron</a>
     <ul class="nav-links">
-      <li><a href="#portfolio" data-fr="Portfolio" data-en="Portfolio">Portfolio</a></li>
+      <li><a href="#fiction" data-fr="Fiction" data-en="Fiction">Fiction</a></li>
+      <li><a href="#pub" data-fr="Publicité" data-en="Commercial">Publicité</a></li>
+      <li><a href="#doc" data-fr="Documentaire" data-en="Documentary">Documentaire</a></li>
+      <li><a href="#clip" data-fr="Vidéo clip" data-en="Music Video">Vidéo clip</a></li>
       <li><a href="#bio" data-fr="À propos" data-en="About">À propos</a></li>
-      <li><a href="#awards" data-fr="Distinctions" data-en="Awards">Distinctions</a></li>
       <li><a href="#contact" data-fr="Contact" data-en="Contact">Contact</a></li>
       <li><button class="lang-toggle" id="langToggle">EN</button></li>
     </ul>
   </nav>
-  <div class="hero-banner" id="home">
+
+  <div class="hero-banner">
     <iframe src="https://player.vimeo.com/video/848482444?autoplay=1&muted=1&loop=1&background=1" allow="autoplay; fullscreen" allowfullscreen></iframe>
     <div class="hero-banner-top"></div>
     <div class="hero-banner-veil"></div>
   </div>
+
   <div class="hero-identity fade-up">
-    <h1 class="hero-name">Alexandre<br>Lampron</h1>
+    <h1 class="hero-name">Alexandre Lampron</h1>
     <div class="hero-meta">
       <div class="hero-rule"></div>
       <span class="hero-label" data-fr="Directeur de la Photographie — Montréal" data-en="Director of Photography — Montréal">Directeur de la Photographie — Montréal</span>
+      <div class="hero-rule"></div>
     </div>
     <p class="hero-sub" data-fr="Fiction · Publicité · Documentaire · Vidéo clip" data-en="Fiction · Commercial · Documentary · Music Video">Fiction · Publicité · Documentaire · Vidéo clip</p>
   </div>
-  <section id="portfolio">
-    <div class="section-header fade-up">
-      <span class="section-number">01</span>
-      <h2 class="section-title" data-fr="Portfolio" data-en="Portfolio">Portfolio</h2>
-      <div class="section-line"></div>
+
+  <section class="cat-section" id="fiction">
+    <div class="cat-header fade-up">
+      <span class="cat-number">01</span>
+      <h2 class="cat-title" data-fr="Fiction" data-en="Fiction">Fiction</h2>
+      <div class="cat-line"></div>
     </div>
-    <div class="filter-bar fade-up">
-      <button class="filter-btn active" data-filter="all" data-fr="Tout" data-en="All">Tout</button>
-      <button class="filter-btn" data-filter="fiction" data-fr="Fiction" data-en="Fiction">Fiction</button>
-      <button class="filter-btn" data-filter="pub" data-fr="Publicité" data-en="Commercial">Publicité</button>
-      <button class="filter-btn" data-filter="doc" data-fr="Documentaire" data-en="Documentary">Documentaire</button>
-      <button class="filter-btn" data-filter="clip" data-fr="Vidéo clip" data-en="Music Video">Vidéo clip</button>
+    <div class="featured-reel fade-up">
+      <div class="featured-reel-label" data-fr="Demo Reel — Fiction" data-en="Demo Reel — Fiction">Demo Reel — Fiction</div>
+      <iframe src="https://player.vimeo.com/video/889238825?color=ddd8ce" allow="autoplay; fullscreen" allowfullscreen></iframe>
     </div>
-    <div class="demo-banner" id="demoBanner">
-      <div class="demo-banner-label" id="demoBannerLabel">Demo Reel</div>
-      <iframe id="demoBannerFrame" src="" allow="autoplay; fullscreen" allowfullscreen></iframe>
-    </div>
-    <div class="video-grid" id="videoGrid">
-      <div class="video-item fade-up" data-category="pub" data-vimeo="391422988" data-title="FOURCHETTE (Saison 1) — extraits DOP"><img class="video-thumb" src="https://vumbnail.com/391422988.jpg" alt="FOURCHETTE"><div class="video-play"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><path d="M0 0l14 8L0 16z"/></svg></div><div class="video-overlay"><div class="video-category" data-fr="Série" data-en="Series">Série</div><div class="video-title">FOURCHETTE (Saison 1)</div></div></div>
-      <div class="video-item fade-up" data-category="fiction" data-vimeo="322836570" data-title="Des Histoires Inventées — extraits DOP"><img class="video-thumb" src="https://vumbnail.com/322836570.jpg" alt="Des Histoires Inventées"><div class="video-play"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><path d="M0 0l14 8L0 16z"/></svg></div><div class="video-overlay"><div class="video-category" data-fr="Fiction" data-en="Fiction">Fiction</div><div class="video-title">Des Histoires Inventées</div></div></div>
-      <div class="video-item fade-up" data-category="fiction" data-vimeo="229867290" data-title="POOL — court-métrage"><img class="video-thumb" src="https://vumbnail.com/229867290.jpg" alt="POOL"><div class="video-play"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><path d="M0 0l14 8L0 16z"/></svg></div><div class="video-overlay"><div class="video-category" data-fr="Fiction" data-en="Fiction">Fiction</div><div class="video-title">POOL</div></div></div>
-      <div class="video-item fade-up" data-category="fiction" data-vimeo="68454763" data-title="I'll Get There — court-métrage"><img class="video-thumb" src="https://vumbnail.com/68454763.jpg" alt="I'll Get There"><div class="video-play"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><path d="M0 0l14 8L0 16z"/></svg></div><div class="video-overlay"><div class="video-category" data-fr="Fiction" data-en="Fiction">Fiction</div><div class="video-title">I'll Get There</div></div></div>
-      <div class="video-item fade-up" data-category="pub" data-vimeo="359637540" data-title="Publicité — EBOX"><img class="video-thumb" src="https://vumbnail.com/359637540.jpg" alt="EBOX"><div class="video-play"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><path d="M0 0l14 8L0 16z"/></svg></div><div class="video-overlay"><div class="video-category" data-fr="Publicité" data-en="Commercial">Publicité</div><div class="video-title">EBOX</div></div></div>
-      <div class="video-item fade-up" data-category="pub" data-vimeo="376415448" data-title="Publicité — Pharmascience"><img class="video-thumb" src="https://vumbnail.com/376415448.jpg" alt="Pharmascience"><div class="video-play"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><path d="M0 0l14 8L0 16z"/></svg></div><div class="video-overlay"><div class="video-category" data-fr="Publicité" data-en="Commercial">Publicité</div><div class="video-title">Pharmascience</div></div></div>
-      <div class="video-item fade-up" data-category="fiction" data-vimeo="206225943" data-title="DESTRIER — court-métrage"><img class="video-thumb" src="https://vumbnail.com/206225943.jpg" alt="DESTRIER"><div class="video-play"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><path d="M0 0l14 8L0 16z"/></svg></div><div class="video-overlay"><div class="video-category" data-fr="Fiction" data-en="Fiction">Fiction</div><div class="video-title">DESTRIER</div></div></div>
-      <div class="video-item fade-up" data-category="clip" data-vimeo="365053751" data-title="Simon Laganiére — Trou Noir"><img class="video-thumb" src="https://vumbnail.com/365053751.jpg" alt="Trou Noir"><div class="video-play"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><path d="M0 0l14 8L0 16z"/></svg></div><div class="video-overlay"><div class="video-category" data-fr="Vidéo clip" data-en="Music Video">Vidéo clip</div><div class="video-title">Simon Laganiére — Trou Noir</div></div></div>
-      <div class="video-item fade-up" data-category="fiction" data-vimeo="215334199" data-title="ENCORE FIANCÉS — court-métrage"><img class="video-thumb" src="https://vumbnail.com/215334199.jpg" alt="ENCORE FIANCÉS"><div class="video-play"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><path d="M0 0l14 8L0 16z"/></svg></div><div class="video-overlay"><div class="video-category" data-fr="Fiction" data-en="Fiction">Fiction</div><div class="video-title">ENCORE FIANCÉS</div></div></div>
-      <div class="video-item fade-up" data-category="pub" data-vimeo="321298432" data-title="Démo Publicitaire"><img class="video-thumb" src="https://vumbnail.com/321298432.jpg" alt="Demo Pub"><div class="video-play"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><path d="M0 0l14 8L0 16z"/></svg></div><div class="video-overlay"><div class="video-category" data-fr="Publicité" data-en="Commercial">Publicité</div><div class="video-title">Démo Publicitaire</div></div></div>
-      <div class="video-item fade-up" data-category="pub" data-vimeo="321310001" data-title="Publicité — LIGHTSPEED"><img class="video-thumb" src="https://vumbnail.com/321310001.jpg" alt="LIGHTSPEED"><div class="video-play"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><path d="M0 0l14 8L0 16z"/></svg></div><div class="video-overlay"><div class="video-category" data-fr="Publicité" data-en="Commercial">Publicité</div><div class="video-title">LIGHTSPEED</div></div></div>
-      <div class="video-item fade-up" data-category="pub" data-vimeo="321310460" data-title="Publicité — Polysleep"><img class="video-thumb" src="https://vumbnail.com/321310460.jpg" alt="Polysleep"><div class="video-play"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><path d="M0 0l14 8L0 16z"/></svg></div><div class="video-overlay"><div class="video-category" data-fr="Publicité" data-en="Commercial">Publicité</div><div class="video-title">Polysleep</div></div></div>
-      <div class="video-item fade-up" data-category="doc" data-vimeo="322836570" data-title="Des Histoires Inventées — documentaire"><img class="video-thumb" src="https://vumbnail.com/322836570.jpg" alt="Documentaire"><div class="video-play"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><path d="M0 0l14 8L0 16z"/></svg></div><div class="video-overlay"><div class="video-category" data-fr="Documentaire" data-en="Documentary">Documentaire</div><div class="video-title">Des Histoires Inventées</div></div></div>
-      <div class="video-item fade-up" data-category="clip" data-vimeo="216426884" data-title="Sarah Dufour — Gun à patates"><img class="video-thumb" src="https://vumbnail.com/216426884.jpg" alt="Sarah Dufour"><div class="video-play"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><path d="M0 0l14 8L0 16z"/></svg></div><div class="video-overlay"><div class="video-category" data-fr="Vidéo clip" data-en="Music Video">Vidéo clip</div><div class="video-title">Sarah Dufour — Gun à patates</div></div></div>
+    <div class="video-mosaic fade-up">
+      <div class="video-item" data-vimeo="1156703959" data-title="L'odyssée de la boucle" data-director=""><img class="video-thumb" src="https://vumbnail.com/1156703959.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">L'odyssée de la boucle</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="1147526260" data-title="Un jour de course" data-director=""><img class="video-thumb" src="https://vumbnail.com/1147526260.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Un jour de course</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="1147522232" data-title="Un jour de course — Extrait" data-director=""><img class="video-thumb" src="https://vumbnail.com/1147522232.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Un jour de course — Extrait</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="847430515" data-title="De Pierre en fille — S1" data-director=""><img class="video-thumb" src="https://vumbnail.com/847430515.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">De Pierre en fille — S1</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="889223201" data-title="De Pierre en fille — S2" data-director=""><img class="video-thumb" src="https://vumbnail.com/889223201.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">De Pierre en fille — S2</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="321282188" data-title="Webthérapie — Saison 3" data-director=""><img class="video-thumb" src="https://vumbnail.com/321282188.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Webthérapie — Saison 3</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="344854926" data-title="Fiction" data-director=""><img class="video-thumb" src="https://vumbnail.com/344854926.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Fiction</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="662459929" data-title="Fiction" data-director=""><img class="video-thumb" src="https://vumbnail.com/662459929.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Fiction</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="506513910" data-title="Fiction" data-director=""><img class="video-thumb" src="https://vumbnail.com/506513910.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Fiction</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="391422988" data-title="FOURCHETTE — Saison 1" data-director=""><img class="video-thumb" src="https://vumbnail.com/391422988.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">FOURCHETTE — Saison 1</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="322981566" data-title="Fiction" data-director=""><img class="video-thumb" src="https://vumbnail.com/322981566.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Fiction</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="842212347" data-title="Fiction" data-director=""><img class="video-thumb" src="https://vumbnail.com/842212347.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Fiction</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="834851334" data-title="Fiction" data-director=""><img class="video-thumb" src="https://vumbnail.com/834851334.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Fiction</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="745398127" data-title="Fiction" data-director=""><img class="video-thumb" src="https://vumbnail.com/745398127.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Fiction</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="638865659" data-title="Fiction" data-director=""><img class="video-thumb" src="https://vumbnail.com/638865659.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Fiction</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="344868729" data-title="Fiction" data-director=""><img class="video-thumb" src="https://vumbnail.com/344868729.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Fiction</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="344866101" data-title="Fiction" data-director=""><img class="video-thumb" src="https://vumbnail.com/344866101.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Fiction</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="325213882" data-title="Fiction" data-director=""><img class="video-thumb" src="https://vumbnail.com/325213882.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Fiction</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="322822371" data-title="Fiction" data-director=""><img class="video-thumb" src="https://vumbnail.com/322822371.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Fiction</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="322838643" data-title="Fiction" data-director=""><img class="video-thumb" src="https://vumbnail.com/322838643.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Fiction</div><div class="video-info-director"></div></div></div>
     </div>
   </section>
+
+  <section class="cat-section" id="pub">
+    <div class="cat-header fade-up">
+      <span class="cat-number">02</span>
+      <h2 class="cat-title" data-fr="Publicité" data-en="Commercial">Publicité</h2>
+      <div class="cat-line"></div>
+    </div>
+    <div class="featured-reel fade-up">
+      <div class="featured-reel-label" data-fr="Demo Reel — Publicité" data-en="Demo Reel — Commercial">Demo Reel — Publicité</div>
+      <iframe src="https://player.vimeo.com/video/848482444?color=ddd8ce" allow="autoplay; fullscreen" allowfullscreen></iframe>
+    </div>
+    <div class="video-mosaic fade-up">
+      <div class="video-item" data-vimeo="1152023662" data-title="BMO Bye Bye" data-director=""><img class="video-thumb" src="https://vumbnail.com/1152023662.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">BMO Bye Bye</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="1146001537" data-title="Publicité" data-director=""><img class="video-thumb" src="https://vumbnail.com/1146001537.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Publicité</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="1109456594" data-title="Publicité" data-director=""><img class="video-thumb" src="https://vumbnail.com/1109456594.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Publicité</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="1109424214" data-title="Publicité" data-director=""><img class="video-thumb" src="https://vumbnail.com/1109424214.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Publicité</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="1109422483" data-title="Publicité" data-director=""><img class="video-thumb" src="https://vumbnail.com/1109422483.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Publicité</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="1109420764" data-title="Publicité" data-director=""><img class="video-thumb" src="https://vumbnail.com/1109420764.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Publicité</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="1005895931" data-title="Publicité" data-director=""><img class="video-thumb" src="https://vumbnail.com/1005895931.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Publicité</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="1019841877" data-title="Publicité" data-director=""><img class="video-thumb" src="https://vumbnail.com/1019841877.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Publicité</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="995162319" data-title="Publicité" data-director=""><img class="video-thumb" src="https://vumbnail.com/995162319.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Publicité</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="995160372" data-title="Publicité" data-director=""><img class="video-thumb" src="https://vumbnail.com/995160372.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Publicité</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="995163326" data-title="Publicité" data-director=""><img class="video-thumb" src="https://vumbnail.com/995163326.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Publicité</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="958619793" data-title="Publicité" data-director=""><img class="video-thumb" src="https://vumbnail.com/958619793.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Publicité</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="958619711" data-title="Publicité" data-director=""><img class="video-thumb" src="https://vumbnail.com/958619711.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Publicité</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="905696686" data-title="Publicité" data-director=""><img class="video-thumb" src="https://vumbnail.com/905696686.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Publicité</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="905714408" data-title="Publicité" data-director=""><img class="video-thumb" src="https://vumbnail.com/905714408.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Publicité</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="845017531" data-title="Publicité" data-director=""><img class="video-thumb" src="https://vumbnail.com/845017531.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Publicité</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="845011401" data-title="Publicité" data-director=""><img class="video-thumb" src="https://vumbnail.com/845011401.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Publicité</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="321310238" data-title="LIGHTSPEED — Retail" data-director=""><img class="video-thumb" src="https://vumbnail.com/321310238.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">LIGHTSPEED — Retail</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="321310001" data-title="LIGHTSPEED — Restaurant" data-director=""><img class="video-thumb" src="https://vumbnail.com/321310001.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">LIGHTSPEED — Restaurant</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="843067306" data-title="Publicité" data-director=""><img class="video-thumb" src="https://vumbnail.com/843067306.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Publicité</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="632574679" data-title="Publicité" data-director=""><img class="video-thumb" src="https://vumbnail.com/632574679.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Publicité</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="632571898" data-title="Publicité" data-director=""><img class="video-thumb" src="https://vumbnail.com/632571898.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Publicité</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="524355708" data-title="Publicité" data-director=""><img class="video-thumb" src="https://vumbnail.com/524355708.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Publicité</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="445254809" data-title="Publicité" data-director=""><img class="video-thumb" src="https://vumbnail.com/445254809.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Publicité</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="359637540" data-title="EBOX" data-director=""><img class="video-thumb" src="https://vumbnail.com/359637540.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">EBOX</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="376415448" data-title="Pharmascience" data-director=""><img class="video-thumb" src="https://vumbnail.com/376415448.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Pharmascience</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="359635303" data-title="Publicité" data-director=""><img class="video-thumb" src="https://vumbnail.com/359635303.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Publicité</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="321307176" data-title="Festival Regard" data-director=""><img class="video-thumb" src="https://vumbnail.com/321307176.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Festival Regard</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="344852266" data-title="Publicité" data-director=""><img class="video-thumb" src="https://vumbnail.com/344852266.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Publicité</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="325249209" data-title="Publicité" data-director=""><img class="video-thumb" src="https://vumbnail.com/325249209.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Publicité</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="321315416" data-title="Publicité" data-director=""><img class="video-thumb" src="https://vumbnail.com/321315416.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Publicité</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="321312808" data-title="CSQ" data-director=""><img class="video-thumb" src="https://vumbnail.com/321312808.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">CSQ</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="321311247" data-title="AGAC" data-director=""><img class="video-thumb" src="https://vumbnail.com/321311247.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">AGAC</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="321310642" data-title="OSM" data-director=""><img class="video-thumb" src="https://vumbnail.com/321310642.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">OSM</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="321310460" data-title="Polysleep" data-director=""><img class="video-thumb" src="https://vumbnail.com/321310460.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Polysleep</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="321308144" data-title="Publicité" data-director=""><img class="video-thumb" src="https://vumbnail.com/321308144.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Publicité</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="321305223" data-title="Festival Regard" data-director=""><img class="video-thumb" src="https://vumbnail.com/321305223.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Festival Regard</div><div class="video-info-director"></div></div></div>
+    </div>
+  </section>
+
+  <section class="cat-section" id="doc">
+    <div class="cat-header fade-up">
+      <span class="cat-number">03</span>
+      <h2 class="cat-title" data-fr="Documentaire" data-en="Documentary">Documentaire</h2>
+      <div class="cat-line"></div>
+    </div>
+    <div class="video-mosaic fade-up">
+      <div class="video-item" data-vimeo="1159489922" data-title="Documentaire" data-director=""><img class="video-thumb" src="https://vumbnail.com/1159489922.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Documentaire</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="1146005517" data-title="Documentaire" data-director=""><img class="video-thumb" src="https://vumbnail.com/1146005517.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Documentaire</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="322836570" data-title="Des Histoires Inventées" data-director="Jean-Marc E. Roy"><img class="video-thumb" src="https://vumbnail.com/322836570.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Des Histoires Inventées</div><div class="video-info-director">Jean-Marc E. Roy</div></div></div>
+      <div class="video-item" data-vimeo="844986192" data-title="Documentaire" data-director=""><img class="video-thumb" src="https://vumbnail.com/844986192.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Documentaire</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="843061571" data-title="Documentaire" data-director=""><img class="video-thumb" src="https://vumbnail.com/843061571.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Documentaire</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="843060672" data-title="Documentaire" data-director=""><img class="video-thumb" src="https://vumbnail.com/843060672.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Documentaire</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="325207063" data-title="Documentaire" data-director=""><img class="video-thumb" src="https://vumbnail.com/325207063.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Documentaire</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="843046157" data-title="Documentaire" data-director=""><img class="video-thumb" src="https://vumbnail.com/843046157.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Documentaire</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="391997814" data-title="Documentaire" data-director=""><img class="video-thumb" src="https://vumbnail.com/391997814.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Documentaire</div><div class="video-info-director"></div></div></div>
+    </div>
+  </section>
+
+  <section class="cat-section" id="clip">
+    <div class="cat-header fade-up">
+      <span class="cat-number">04</span>
+      <h2 class="cat-title" data-fr="Vidéo clip" data-en="Music Video">Vidéo clip</h2>
+      <div class="cat-line"></div>
+    </div>
+    <div class="video-mosaic fade-up">
+      <div class="video-item" data-vimeo="508929860" data-title="Vidéo clip" data-director=""><img class="video-thumb" src="https://vumbnail.com/508929860.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Vidéo clip</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="458176346" data-title="Vidéo clip" data-director=""><img class="video-thumb" src="https://vumbnail.com/458176346.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Vidéo clip</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="845062448" data-title="Vidéo clip" data-director=""><img class="video-thumb" src="https://vumbnail.com/845062448.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Vidéo clip</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="841971815" data-title="Vidéo clip" data-director=""><img class="video-thumb" src="https://vumbnail.com/841971815.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Vidéo clip</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="365053751" data-title="Trou Noir" data-director="Simon Laganiére"><img class="video-thumb" src="https://vumbnail.com/365053751.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Trou Noir</div><div class="video-info-director">Simon Laganiére</div></div></div>
+      <div class="video-item" data-vimeo="344868279" data-title="Vidéo clip" data-director=""><img class="video-thumb" src="https://vumbnail.com/344868279.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Vidéo clip</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="344870375" data-title="Vidéo clip" data-director=""><img class="video-thumb" src="https://vumbnail.com/344870375.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Vidéo clip</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="325008450" data-title="Vidéo clip" data-director=""><img class="video-thumb" src="https://vumbnail.com/325008450.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Vidéo clip</div><div class="video-info-director"></div></div></div>
+      <div class="video-item" data-vimeo="325011953" data-title="Vidéo clip" data-director=""><img class="video-thumb" src="https://vumbnail.com/325011953.jpg" alt=""><div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div><div class="video-info"><div class="video-info-title">Vidéo clip</div><div class="video-info-director"></div></div></div>
+    </div>
+  </section>
+
   <section id="bio">
-    <div class="section-header fade-up"><span class="section-number">02</span><h2 class="section-title" data-fr="À propos" data-en="About">À propos</h2><div class="section-line"></div></div>
+    <div class="section-header fade-up">
+      <span class="cat-number">05</span>
+      <h2 class="cat-title" data-fr="À propos" data-en="About">À propos</h2>
+      <div class="cat-line"></div>
+    </div>
     <div class="bio-grid">
-      <div class="bio-image-wrap fade-up"><img class="bio-image" src="https://www.alexlampron.com/img/alex.jpg" alt="Alexandre Lampron"><div class="bio-image-frame"></div></div>
+      <div class="bio-image-wrap fade-up">
+        <img class="bio-image" src="https://www.alexlampron.com/img/alex.jpg" alt="Alexandre Lampron">
+        <div class="bio-image-frame"></div>
+      </div>
       <div class="bio-text fade-up">
         <h3 data-fr="Directeur de la Photographie" data-en="Director of Photography">Directeur de la Photographie</h3>
         <p class="lang-fr">Alexandre Lampron est directeur de la photographie basé à Montréal. Depuis ses débuts en 2011, il a développé une signature visuelle distinctive à travers le cinéma, la publicité et le clip musical — un regard sensible qui allie rigueur technique et poésie visuelle.</p>
@@ -182,38 +284,60 @@
       </div>
     </div>
   </section>
+
   <section id="awards">
-    <div class="section-header fade-up"><span class="section-number">03</span><h2 class="section-title" data-fr="Distinctions" data-en="Awards">Distinctions</h2><div class="section-line"></div></div>
+    <div class="section-header fade-up">
+      <span class="cat-number">06</span>
+      <h2 class="cat-title" data-fr="Distinctions" data-en="Awards">Distinctions</h2>
+      <div class="cat-line"></div>
+    </div>
     <div class="awards-list">
-      <div class="award-item fade-up"><div class="award-year">2018</div><div class="award-title">Nomination — Prix IRIS</div><div class="award-desc lang-fr">Meilleure direction photo documentaire — <em>Des Histoires Inventées</em>, Jean-Marc E. Roy</div><div class="award-desc lang-en" style="display:none">Best documentary cinematography — <em>Des Histoires Inventées</em>, Jean-Marc E. Roy</div></div>
+      <div class="award-item fade-up"><div class="award-year">2018</div><div class="award-title">Nomination — Prix IRIS</div><div class="award-desc lang-fr">Meilleure direction photo documentaire — <em>Des Histoires Inventées</em>, Jean-Marc E. Roy</div><div class="award-desc lang-en" style="display:none">Best documentary cinematography — <em>Des Histoires Inventées</em></div></div>
       <div class="award-item fade-up"><div class="award-year">2016</div><div class="award-title">Nomination — Prix Gémeaux</div><div class="award-desc lang-fr">Série documentaire <em>Tabous et Interdits</em>, réal. Christian Laurence</div><div class="award-desc lang-en" style="display:none">Documentary series <em>Tabous et Interdits</em>, dir. Christian Laurence</div></div>
-      <div class="award-item fade-up"><div class="award-year">2016</div><div class="award-title">Best Cinematic Achievement</div><div class="award-desc lang-fr">Festival de Thessaloniki — court-métrage <em>POOL</em></div><div class="award-desc lang-en" style="display:none">Thessaloniki Festival — short film <em>POOL</em></div></div>
-      <div class="award-item fade-up"><div class="award-year">2014</div><div class="award-title">Best Cinematography</div><div class="award-desc lang-fr">Australian International Fashion Film Festival — <em>I'll Get There</em></div><div class="award-desc lang-en" style="display:none">Australian International Fashion Film Festival — <em>I'll Get There</em></div></div>
-      <div class="award-item fade-up"><div class="award-year">2014</div><div class="award-title">Best Fashion Film</div><div class="award-desc lang-fr">Miami Fashion Film Festival — <em>I'll Get There</em></div><div class="award-desc lang-en" style="display:none">Miami Fashion Film Festival — <em>I'll Get There</em></div></div>
-      <div class="award-item fade-up"><div class="award-year">2011</div><div class="award-title lang-fr">7 Prix en festivals internationaux</div><div class="award-title lang-en" style="display:none">7 International Festival Awards</div><div class="award-desc lang-fr">Co-réalisation et DOP — <em>NOSTRADAMOS</em></div><div class="award-desc lang-en" style="display:none">Co-direction and DOP — <em>NOSTRADAMOS</em></div></div>
+      <div class="award-item fade-up"><div class="award-year">2016</div><div class="award-title">Best Cinematic Achievement</div><div class="award-desc lang-fr">Festival de Thessaloniki — <em>POOL</em></div><div class="award-desc lang-en" style="display:none">Thessaloniki Festival — <em>POOL</em></div></div>
+      <div class="award-item fade-up"><div class="award-year">2014</div><div class="award-title">Best Cinematography</div><div class="award-desc">Australian International Fashion Film Festival — <em>I'll Get There</em></div></div>
+      <div class="award-item fade-up"><div class="award-year">2014</div><div class="award-title">Best Fashion Film</div><div class="award-desc">Miami Fashion Film Festival — <em>I'll Get There</em></div></div>
+      <div class="award-item fade-up"><div class="award-year">2011</div><div class="award-title lang-fr">7 Prix — Festivals internationaux</div><div class="award-title lang-en" style="display:none">7 International Festival Awards</div><div class="award-desc lang-fr">Co-réalisation et DOP — <em>NOSTRADAMOS</em></div><div class="award-desc lang-en" style="display:none">Co-direction and DOP — <em>NOSTRADAMOS</em></div></div>
     </div>
   </section>
+
   <section id="contact">
-    <div class="section-header fade-up"><span class="section-number">04</span><h2 class="section-title" data-fr="Contact" data-en="Contact">Contact</h2><div class="section-line"></div></div>
+    <div class="section-header fade-up">
+      <span class="cat-number">07</span>
+      <h2 class="cat-title" data-fr="Contact" data-en="Contact">Contact</h2>
+      <div class="cat-line"></div>
+    </div>
     <div class="contact-grid">
-      <div class="fade-up"><p class="contact-intro lang-fr">Discutons de votre<br>prochain projet.</p><p class="contact-intro lang-en" style="display:none">Let's talk about<br>your next project.</p></div>
+      <div class="fade-up">
+        <p class="contact-intro lang-fr">Discutons de votre<br>prochain projet.</p>
+        <p class="contact-intro lang-en" style="display:none">Let's talk about<br>your next project.</p>
+      </div>
       <div class="fade-up">
         <div class="contact-item"><span class="contact-label">Email</span><span class="contact-value"><a href="mailto:info@alexlampron.com">info@alexlampron.com</a></span></div>
         <div class="contact-item"><span class="contact-label" data-fr="Tél" data-en="Tel">Tél</span><span class="contact-value"><a href="tel:+15146047763">514-604-7763</a></span></div>
         <div class="contact-item"><span class="contact-label" data-fr="Ville" data-en="City">Ville</span><span class="contact-value">Montréal, QC</span></div>
-        <a href="https://vimeo.com/alexlampron" target="_blank" class="contact-vimeo"><svg width="18" height="16" viewBox="0 0 18 16" fill="currentColor"><path d="M17.96 4.29c-.08 1.71-1.27 4.05-3.57 7.02C11.99 14.38 9.97 16 8.26 16c-1.04 0-1.92-.96-2.64-2.88L4.2 8.52C3.67 6.6 3.1 5.64 2.48 5.64c-.13 0-.59.28-1.37.83L0 5.29c.86-.76 1.71-1.52 2.55-2.28 1.15-1 2.01-1.52 2.58-1.57 1.36-.13 2.19.8 2.51 2.78.34 2.13.58 3.46.71 3.98.39 1.79.82 2.68 1.29 2.68.36 0 .91-.57 1.63-1.72.72-1.15 1.1-2.02 1.14-2.63.1-.99-.29-1.49-1.14-1.49-.41 0-.83.09-1.27.28.84-2.76 2.46-4.1 4.84-4.02 1.77.05 2.6 1.2 2.52 3.45z"/></svg><span data-fr="Voir le portfolio Vimeo" data-en="View Vimeo portfolio">Voir le portfolio Vimeo</span></a>
+        <a href="https://vimeo.com/alexlampron" target="_blank" class="contact-vimeo">
+          <svg width="18" height="16" viewBox="0 0 18 16" fill="currentColor"><path d="M17.96 4.29c-.08 1.71-1.27 4.05-3.57 7.02C11.99 14.38 9.97 16 8.26 16c-1.04 0-1.92-.96-2.64-2.88L4.2 8.52C3.67 6.6 3.1 5.64 2.48 5.64c-.13 0-.59.28-1.37.83L0 5.29c.86-.76 1.71-1.52 2.55-2.28 1.15-1 2.01-1.52 2.58-1.57 1.36-.13 2.19.8 2.51 2.78.34 2.13.58 3.46.71 3.98.39 1.79.82 2.68 1.29 2.68.36 0 .91-.57 1.63-1.72.72-1.15 1.1-2.02 1.14-2.63.1-.99-.29-1.49-1.14-1.49-.41 0-.83.09-1.27.28.84-2.76 2.46-4.1 4.84-4.02 1.77.05 2.6 1.2 2.52 3.45z"/></svg>
+          <span data-fr="Voir le portfolio Vimeo" data-en="View Vimeo portfolio">Voir le portfolio Vimeo</span>
+        </a>
       </div>
     </div>
   </section>
+
   <footer>
     <div class="footer-name">Alexandre Lampron — DOP</div>
     <div class="footer-copy">© 2025 Alexandre Lampron. Montréal, Canada.</div>
   </footer>
+
   <div class="lightbox" id="lightbox">
     <button class="lightbox-close" id="lightboxClose">✕ <span data-fr="Fermer" data-en="Close">Fermer</span></button>
     <div class="lightbox-video"><iframe id="lightboxFrame" src="" allow="autoplay; fullscreen" allowfullscreen></iframe></div>
-    <div class="lightbox-title" id="lightboxTitle"></div>
+    <div class="lightbox-meta">
+      <div class="lightbox-title" id="lightboxTitle"></div>
+      <div class="lightbox-director" id="lightboxDirector"></div>
+    </div>
   </div>
+
   <script>
     let lang = 'fr';
     const langToggle = document.getElementById('langToggle');
@@ -229,42 +353,35 @@
     }
     langToggle.addEventListener('click', () => setLang(lang === 'fr' ? 'en' : 'fr'));
     setLang('fr');
-    const demoReels = { fiction: { id: '889238825', label: 'Demo Reel — Fiction' }, pub: { id: '848482444', label: 'Demo Reel — Publicité' } };
-    const demoBanner = document.getElementById('demoBanner');
-    const demoBannerFrame = document.getElementById('demoBannerFrame');
-    const demoBannerLabel = document.getElementById('demoBannerLabel');
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const filter = btn.dataset.filter;
-        if (filter !== 'all' && demoReels[filter]) {
-          demoBannerFrame.src = `https://player.vimeo.com/video/${demoReels[filter].id}?color=ddd8ce`;
-          demoBannerLabel.textContent = demoReels[filter].label;
-          demoBanner.classList.add('visible');
-        } else { demoBanner.classList.remove('visible'); demoBannerFrame.src = ''; }
-        document.querySelectorAll('.video-item').forEach(item => {
-          item.style.display = (filter === 'all' || item.dataset.category === filter) ? '' : 'none';
-        });
-      });
-    });
+
     const lightbox = document.getElementById('lightbox');
     const lightboxFrame = document.getElementById('lightboxFrame');
     const lightboxTitle = document.getElementById('lightboxTitle');
+    const lightboxDirector = document.getElementById('lightboxDirector');
     const lightboxClose = document.getElementById('lightboxClose');
+
     document.querySelectorAll('.video-item').forEach(item => {
       item.addEventListener('click', () => {
         const id = item.dataset.vimeo;
-        if (id) { lightboxFrame.src = `https://player.vimeo.com/video/${id}?autoplay=1`; lightboxTitle.textContent = item.dataset.title; lightbox.classList.add('open'); document.body.style.overflow = 'hidden'; }
+        if (id) {
+          lightboxFrame.src = `https://player.vimeo.com/video/${id}?autoplay=1`;
+          lightboxTitle.textContent = item.dataset.title || '';
+          const dir = item.dataset.director;
+          lightboxDirector.textContent = dir ? `Réal. ${dir}` : '';
+          lightbox.classList.add('open');
+          document.body.style.overflow = 'hidden';
+        }
       });
     });
+
     function closeLightbox() { lightbox.classList.remove('open'); lightboxFrame.src = ''; document.body.style.overflow = ''; }
     lightboxClose.addEventListener('click', closeLightbox);
     lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
     const observer = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.08 });
+    }, { threshold: 0.06 });
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
     document.querySelector('.hero-identity').classList.add('visible');
   </script>
