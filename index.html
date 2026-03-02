@@ -29,7 +29,8 @@
 
     /* HERO BANNER 4:1 */
     .hero-banner { position: relative; width: 100%; height: 380px; overflow: hidden; background: #0a0a0a; }
-    .hero-banner-poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 40%; z-index: 0; }
+    .hero-banner-poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 40%; z-index: 2; transition: opacity 1.5s ease; opacity: 0; }
+    .hero-banner-poster.hidden { opacity: 0; pointer-events: none; }
     .hero-banner iframe { position: absolute; top: 40%; left: 50%; width: 110%; height: 400%; transform: translate(-50%,-40%); border: none; pointer-events: none; z-index: 1; }
     .hero-banner-veil { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 0%, transparent 50%, rgba(8,8,8,0.7) 85%, rgba(8,8,8,1) 100%); z-index: 1; }
     /* IDENTITY */
@@ -742,22 +743,15 @@
         const poster = document.getElementById('bannerPoster');
         if (poster && data[0] && data[0].thumbnail_large) {
           poster.src = data[0].thumbnail_large;
+          poster.onload = () => { poster.style.opacity = '1'; };
         }
       }).catch(() => {});
 
-    // On desktop: fade poster out after video starts. On mobile: keep poster (autoplay blocked)
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    const bannerIframe = document.querySelector('.hero-banner iframe');
-    const bannerPoster = document.getElementById('bannerPoster');
-    if (!isMobile && bannerIframe && bannerPoster) {
-      bannerIframe.addEventListener('load', () => {
-        setTimeout(() => {
-          bannerPoster.style.transition = 'opacity 1.5s ease';
-          bannerPoster.style.opacity = '0';
-          setTimeout(() => bannerPoster.style.display = 'none', 1500);
-        }, 3000);
-      });
-    }
+    // Fade poster out after 4 seconds on all devices
+    setTimeout(() => {
+      const poster = document.getElementById('bannerPoster');
+      if (poster) poster.classList.add('hidden');
+    }, 4000);
 
     // Load Vimeo thumbnails via oEmbed (no watermark)
     document.querySelectorAll('.video-item[data-vimeo]').forEach(item => {
