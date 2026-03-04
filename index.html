@@ -156,7 +156,7 @@
 
   <!-- HERO BANNER -->
   <div class="hero-banner">
-    <iframe src="https://player.vimeo.com/video/848482444?autoplay=1&muted=1&loop=1&background=1&quality=540p&dnt=1" allow="autoplay; fullscreen" allowfullscreen loading="eager"></iframe>
+    <iframe id="bannerIframe" src="https://player.vimeo.com/video/848482444?autoplay=1&muted=1&loop=1&background=1&dnt=1" allow="autoplay; fullscreen" allowfullscreen loading="eager"></iframe>
     <div class="hero-banner-veil"></div>
   </div>
 
@@ -701,6 +701,7 @@
     </div>
   </div>
 
+  <script src="https://player.vimeo.com/api/player.js"></script>
   <script>
     let lang = 'fr';
     const langToggle = document.getElementById('langToggle');
