@@ -137,10 +137,10 @@
       .hero-banner { display: none; }
       .featured-reel { aspect-ratio: 16/9; }
 
-      /* Compact mobile mosaic */
-      .video-mosaic { grid-template-columns: repeat(3, 1fr); gap: 3px; }
-      .video-item { aspect-ratio: 1/1; }
-      .video-thumb { filter: brightness(0.7) saturate(0.7); transition: filter 0.3s ease, transform 0.3s ease; }
+      /* Compact mobile mosaic — 4 cols, 16/9 */
+      .video-mosaic { grid-template-columns: repeat(4, 1fr); gap: 2px; }
+      .video-item { aspect-ratio: 16/9; }
+      .video-thumb { filter: brightness(0.75) saturate(0.8); transition: filter 0.3s ease; }
       .video-info { display: none; }
       .video-play-icon { display: none; }
 
@@ -970,19 +970,22 @@
       });
     });
 
-    // Mobile: swipe over grid to preview, tap preview to play
+    // Mobile: touch=preview, release=collapse, double-tap=play
     const mobileOverlay = document.getElementById('mobileOverlay');
     const mobilePreview = document.getElementById('mobilePreview');
     const mobilePreviewImg = document.getElementById('mobilePreviewImg');
     const mobilePreviewTitle = document.getElementById('mobilePreviewTitle');
     const mobilePreviewMeta = document.getElementById('mobilePreviewMeta');
     let previewItem = null;
+    let lastTapItem = null;
+    let lastTapTime = 0;
 
     function showPreview(item) {
       if (previewItem === item) return;
       previewItem = item;
-      const img = item.querySelector('.video-thumb');
-      mobilePreviewImg.src = img.src;
+      // Get the actual loaded src from the thumb image
+      const thumbImg = item.querySelector('.video-thumb');
+      mobilePreviewImg.src = thumbImg.currentSrc || thumbImg.src;
       mobilePreviewTitle.textContent = item.dataset.title || '';
       const dir = item.querySelector('.video-info-director');
       mobilePreviewMeta.innerHTML = dir ? dir.innerHTML : '';
@@ -996,50 +999,47 @@
       mobileOverlay.classList.remove('active');
     }
 
-    function itemFromTouch(touch) {
-      const el = document.elementFromPoint(touch.clientX, touch.clientY);
-      return el ? el.closest('.video-item') : null;
+    function playItem(item) {
+      if (!item) return;
+      hidePreview();
+      const id = item.dataset.vimeo;
+      const ytId = item.dataset.youtube;
+      if (id || ytId) {
+        lightboxFrame.src = ytId
+          ? `https://www.youtube.com/embed/${ytId}?autoplay=1`
+          : `https://player.vimeo.com/video/${id}?autoplay=1`;
+        lightboxTitle.textContent = item.dataset.title || '';
+        lightboxDirector.textContent = '';
+        lightbox.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
     }
 
     if (window.innerWidth <= 600) {
-      // Touch start — show preview immediately on first touch
-      document.querySelectorAll('.video-mosaic').forEach(mosaic => {
-        mosaic.addEventListener('touchstart', (e) => {
-          const item = itemFromTouch(e.touches[0]);
-          if (item) { showPreview(item); e.preventDefault(); }
+      document.querySelectorAll('.video-item').forEach(item => {
+
+        item.addEventListener('touchstart', (e) => {
+          e.preventDefault();
+          showPreview(item);
+
+          // Double-tap detection
+          const now = Date.now();
+          if (lastTapItem === item && now - lastTapTime < 350) {
+            playItem(item);
+          }
+          lastTapItem = item;
+          lastTapTime = now;
         }, { passive: false });
 
-        // Slide finger — update preview to whichever thumbnail is under finger
-        mosaic.addEventListener('touchmove', (e) => {
-          const item = itemFromTouch(e.touches[0]);
-          if (item) showPreview(item);
+        item.addEventListener('touchend', (e) => {
           e.preventDefault();
-        }, { passive: false });
-
-        // Lift finger — keep preview visible, wait for tap on preview
-        mosaic.addEventListener('touchend', (e) => {
-          e.preventDefault();
+          // Small delay so double-tap can still register
+          setTimeout(() => {
+            if (previewItem === item) hidePreview();
+          }, 300);
         }, { passive: false });
       });
 
-      // Tap on preview card — open video
-      mobilePreview.addEventListener('click', () => {
-        if (!previewItem) return;
-        const id = previewItem.dataset.vimeo;
-        const ytId = previewItem.dataset.youtube;
-        hidePreview();
-        if (id || ytId) {
-          lightboxFrame.src = ytId
-            ? `https://www.youtube.com/embed/${ytId}?autoplay=1`
-            : `https://player.vimeo.com/video/${id}?autoplay=1`;
-          lightboxTitle.textContent = previewItem.dataset.title || '';
-          lightboxDirector.textContent = '';
-          lightbox.classList.add('open');
-          document.body.style.overflow = 'hidden';
-        }
-      });
-
-      // Tap overlay — dismiss preview
       mobileOverlay.addEventListener('click', hidePreview);
     }
 
