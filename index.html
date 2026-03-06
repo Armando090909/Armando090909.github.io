@@ -162,7 +162,7 @@
         cursor: pointer;
       }
       .mobile-preview.active { display: block; }
-      .mobile-preview img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.3); }
+      .mobile-preview img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.65); }
       .mobile-preview .mobile-preview-info {
         position: absolute;
         inset: 0;
@@ -187,16 +187,29 @@
       }
       .mobile-preview .mobile-preview-play {
         position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -60%);
-        width: 52px;
-        height: 52px;
-        border: 1px solid rgba(255,255,255,0.5);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        bottom: 18px;
+        right: 18px;
+        padding: 8px 18px;
+        border: 1px solid rgba(255,255,255,0.6);
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 14px;
+        letter-spacing: 0.15em;
+        color: white;
+        background: rgba(8,8,8,0.5);
+        overflow: hidden;
+      }
+      .mobile-preview .mobile-preview-play::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: rgba(255,255,255,0.15);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: none;
+      }
+      .mobile-preview.active .mobile-preview-play::after {
+        transform: scaleX(1);
+        transition: transform 3s linear;
       }
     }
     @media (min-width: 601px) {
@@ -226,7 +239,7 @@
       <div class="mobile-preview-title" id="mobilePreviewTitle"></div>
       <div class="mobile-preview-meta" id="mobilePreviewMeta"></div>
     </div>
-    <div class="mobile-preview-play"><svg width="14" height="17" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div>
+    <div class="mobile-preview-play" id="mobilePreviewPlay">▶ Regarder</div>
   </div>
 
   <!-- HERO BANNER -->
@@ -970,20 +983,20 @@
       });
     });
 
-    // Mobile: touch=preview, release=collapse, double-tap=play
+    // Mobile: touch=preview, auto-plays after 3s, tap outside=dismiss
     const mobileOverlay = document.getElementById('mobileOverlay');
     const mobilePreview = document.getElementById('mobilePreview');
     const mobilePreviewImg = document.getElementById('mobilePreviewImg');
     const mobilePreviewTitle = document.getElementById('mobilePreviewTitle');
     const mobilePreviewMeta = document.getElementById('mobilePreviewMeta');
+    const mobilePreviewPlay = document.getElementById('mobilePreviewPlay');
     let previewItem = null;
-    let lastTapItem = null;
-    let lastTapTime = 0;
+    let autoPlayTimer = null;
 
     function showPreview(item) {
       if (previewItem === item) return;
+      clearTimeout(autoPlayTimer);
       previewItem = item;
-      // Get the actual loaded src from the thumb image
       const thumbImg = item.querySelector('.video-thumb');
       mobilePreviewImg.src = thumbImg.currentSrc || thumbImg.src;
       mobilePreviewTitle.textContent = item.dataset.title || '';
@@ -991,9 +1004,13 @@
       mobilePreviewMeta.innerHTML = dir ? dir.innerHTML : '';
       mobilePreview.classList.add('active');
       mobileOverlay.classList.add('active');
+
+      // Auto-play after 3 seconds
+      autoPlayTimer = setTimeout(() => playItem(item), 3000);
     }
 
     function hidePreview() {
+      clearTimeout(autoPlayTimer);
       previewItem = null;
       mobilePreview.classList.remove('active');
       mobileOverlay.classList.remove('active');
@@ -1017,29 +1034,20 @@
 
     if (window.innerWidth <= 600) {
       document.querySelectorAll('.video-item').forEach(item => {
-
         item.addEventListener('touchstart', (e) => {
           e.preventDefault();
           showPreview(item);
-
-          // Double-tap detection
-          const now = Date.now();
-          if (lastTapItem === item && now - lastTapTime < 350) {
-            playItem(item);
-          }
-          lastTapItem = item;
-          lastTapTime = now;
-        }, { passive: false });
-
-        item.addEventListener('touchend', (e) => {
-          e.preventDefault();
-          // Small delay so double-tap can still register
-          setTimeout(() => {
-            if (previewItem === item) hidePreview();
-          }, 300);
         }, { passive: false });
       });
 
+      // Tap play button — immediate play
+      mobilePreviewPlay.addEventListener('click', (e) => {
+        e.stopPropagation();
+        clearTimeout(autoPlayTimer);
+        playItem(previewItem);
+      });
+
+      // Tap overlay — dismiss
       mobileOverlay.addEventListener('click', hidePreview);
     }
 
