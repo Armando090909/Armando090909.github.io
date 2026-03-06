@@ -59,14 +59,14 @@
     .featured-reel-label { position: absolute; top: 18px; left: 24px; font-size: 9px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--muted); z-index: 3; background: rgba(8,8,8,0.7); padding: 5px 12px; }
 
     /* VIDEO MOSAIC */
-    .video-mosaic { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
+    .video-mosaic { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
     .video-item { position: relative; aspect-ratio: 16/9; overflow: hidden; background: var(--surface); cursor: pointer; }
     .video-thumb { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94), filter 0.4s ease; filter: brightness(1) saturate(1); }
     .video-item:hover .video-thumb { transform: scale(1.07); filter: brightness(0.25) saturate(0.5); }
     .video-info { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 14px 16px; background: linear-gradient(to top, rgba(8,8,8,0.95) 0%, rgba(8,8,8,0.3) 50%, transparent 100%); opacity: 0; transition: opacity 0.35s ease; }
     .video-item:hover .video-info { opacity: 1; }
-    .video-info-title { font-family: 'Cormorant Garamond', serif; font-size: 15px; font-weight: 300; color: var(--text); line-height: 1.2; margin-bottom: 3px; }
-    .video-info-director { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); }
+    .video-info-title { font-family: 'Cormorant Garamond', serif; font-size: 17px; font-weight: 300; color: var(--text); line-height: 1.2; margin-bottom: 6px; }
+    .video-info-director { font-size: 13px; letter-spacing: 0.05em; color: var(--muted); font-style: italic; line-height: 1.5; }
     .video-play-icon { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%) scale(0.85); width: 44px; height: 44px; border: 1px solid rgba(255,255,255,0.4); border-radius: 50%; display: flex; align-items: center; justify-content: center; opacity: 0; transition: all 0.3s ease; }
     .video-play-icon svg { margin-left: 3px; }
     .video-item:hover .video-play-icon { opacity: 1; transform: translate(-50%,-50%) scale(1); }
@@ -136,6 +136,68 @@
       .nav-logo { opacity: 0; transition: opacity 0.4s ease; }
       .hero-banner { display: none; }
       .featured-reel { aspect-ratio: 16/9; }
+
+      /* Compact mobile mosaic */
+      .video-mosaic { grid-template-columns: repeat(3, 1fr); gap: 3px; }
+      .video-item { aspect-ratio: 1/1; }
+      .video-thumb { filter: brightness(0.7) saturate(0.7); transition: filter 0.3s ease, transform 0.3s ease; }
+      .video-info { display: none; }
+      .video-play-icon { display: none; }
+
+      /* Dim overlay */
+      .mobile-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.88); z-index: 499; }
+      .mobile-overlay.active { display: block; }
+
+      /* Preview card shown in center of screen */
+      .mobile-preview {
+        display: none;
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 88vw;
+        aspect-ratio: 16/9;
+        z-index: 500;
+        overflow: hidden;
+        cursor: pointer;
+      }
+      .mobile-preview.active { display: block; }
+      .mobile-preview img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.3); }
+      .mobile-preview .mobile-preview-info {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 18px 20px;
+        background: linear-gradient(to top, rgba(8,8,8,0.95) 0%, rgba(8,8,8,0.2) 60%, transparent 100%);
+      }
+      .mobile-preview .mobile-preview-title {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 20px;
+        font-weight: 300;
+        color: var(--text);
+        margin-bottom: 6px;
+        line-height: 1.2;
+      }
+      .mobile-preview .mobile-preview-meta {
+        font-size: 13px;
+        color: var(--muted);
+        font-style: italic;
+      }
+      .mobile-preview .mobile-preview-play {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -60%);
+        width: 52px;
+        height: 52px;
+        border: 1px solid rgba(255,255,255,0.5);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
     }
     @media (min-width: 601px) {
       .hero-name { display: none; }
@@ -156,6 +218,16 @@
       <li><button class="lang-toggle" id="langToggle">EN</button></li>
     </ul>
   </nav>
+
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+  <div class="mobile-preview" id="mobilePreview">
+    <img id="mobilePreviewImg" src="" alt="">
+    <div class="mobile-preview-info">
+      <div class="mobile-preview-title" id="mobilePreviewTitle"></div>
+      <div class="mobile-preview-meta" id="mobilePreviewMeta"></div>
+    </div>
+    <div class="mobile-preview-play"><svg width="14" height="17" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div>
+  </div>
 
   <!-- HERO BANNER -->
   <div class="hero-banner">
@@ -187,122 +259,151 @@
       <div class="featured-reel-play"><svg width="18" height="22" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div>
       <iframe src="" allow="autoplay; fullscreen" allowfullscreen></iframe>
     </div>
-    <div class="video-mosaic fade-up">
+        <div class="video-mosaic fade-up">
 
-      <div class="video-item" data-vimeo="889223201" data-title="Sapin$" data-director="">
+      <div class="video-item" data-vimeo="889223201" data-title="Sapin$">
         <img class="video-thumb" src="https://vumbnail.com/889223201.jpg" alt="Sapin$">
         <div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div>
-        <div class="video-info"><div class="video-info-title">Sapin$</div><div class="video-info-director"></div></div>
+        <div class="video-info">
+          <div class="video-info-title">Sapin$</div>
+          <div class="video-info-director"><em>long-métrage</em> · Stéphane Moukarzel · 2022</div>
+        </div>
       </div>
 
-      <div class="video-item" data-vimeo="1147522232" data-title="L'odyssée de la boucle — B.A." data-director="">
-        <img class="video-thumb" src="https://vumbnail.com/1147522232.jpg" alt="L'odyssée de la boucle — B.A.">
+      <div class="video-item" data-vimeo="1147522232" data-title="L'odyssée de la boucle">
+        <img class="video-thumb" src="https://vumbnail.com/1147522232.jpg" alt="L'odyssée de la boucle">
         <div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div>
-        <div class="video-info"><div class="video-info-title">L'odyssée de la boucle — B.A.</div><div class="video-info-director"></div></div>
+        <div class="video-info">
+          <div class="video-info-title">L'odyssée de la boucle</div>
+          <div class="video-info-director"><em>court-métrage</em> · Benjamin Lussier · 2024</div>
+        </div>
       </div>
 
-      <div class="video-item" data-vimeo="638865659" data-title="Mimine" data-director="">
+      <div class="video-item" data-vimeo="638865659" data-title="Mimine">
         <img class="video-thumb" src="https://vumbnail.com/638865659.jpg" alt="Mimine">
         <div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div>
-        <div class="video-info"><div class="video-info-title">Mimine</div><div class="video-info-director"></div></div>
+        <div class="video-info">
+          <div class="video-info-title">Mimine</div>
+          <div class="video-info-director"><em>court-métrage</em> · Simon Laganière · 2020</div>
+        </div>
       </div>
 
-      <div class="video-item" data-vimeo="322981566" data-title="POOL" data-director="">
+      <div class="video-item" data-vimeo="322981566" data-title="POOL">
         <img class="video-thumb" src="https://vumbnail.com/322981566.jpg" alt="POOL">
         <div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div>
-        <div class="video-info"><div class="video-info-title">POOL</div><div class="video-info-director"></div></div>
+        <div class="video-info">
+          <div class="video-info-title">POOL</div>
+          <div class="video-info-director"><em>court-métrage</em> · Benjamin Lussier · 2014</div>
+        </div>
       </div>
 
-      <div class="video-item" data-vimeo="322838643" data-title="I'll Get There" data-director="">
-        <img class="video-thumb" src="https://vumbnail.com/322838643.jpg" alt="I'll Get There">
+      <div class="video-item" data-vimeo="322838643" data-title="I'll get there">
+        <img class="video-thumb" src="https://vumbnail.com/322838643.jpg" alt="I'll get there">
         <div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div>
-        <div class="video-info"><div class="video-info-title">I'll Get There</div><div class="video-info-director"></div></div>
+        <div class="video-info">
+          <div class="video-info-title">I'll get there</div>
+          <div class="video-info-director"><em>court-métrage</em> · Benjamin Lussier · 2013</div>
+        </div>
       </div>
 
-      <div class="video-item" data-vimeo="842212347" data-title="Mélodies perdues" data-director="">
+      <div class="video-item" data-vimeo="842212347" data-title="Mélodies perdues">
         <img class="video-thumb" src="https://vumbnail.com/842212347.jpg" alt="Mélodies perdues">
         <div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div>
-        <div class="video-info"><div class="video-info-title">Mélodies perdues</div><div class="video-info-director"></div></div>
+        <div class="video-info">
+          <div class="video-info-title">Mélodies perdues</div>
+          <div class="video-info-director"><em>film télé</em> · Christian Lalumière · 2021</div>
+        </div>
       </div>
 
-      <div class="video-item" data-vimeo="834851334" data-title="Aujourd'hui ou je meurs" data-director="">
+      <div class="video-item" data-vimeo="834851334" data-title="Aujourd'hui ou je meurs">
         <img class="video-thumb" src="https://vumbnail.com/834851334.jpg" alt="Aujourd'hui ou je meurs">
         <div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div>
-        <div class="video-info"><div class="video-info-title">Aujourd'hui ou je meurs</div><div class="video-info-director"></div></div>
+        <div class="video-info">
+          <div class="video-info-title">Aujourd'hui ou je meurs</div>
+          <div class="video-info-director"><em>court-métrage</em> · Kristina Wagenbauer · 2019</div>
+        </div>
       </div>
 
-      <div class="video-item" data-vimeo="325213882" data-title="Pedram Karimi F/W 15" data-director="">
+      <div class="video-item" data-vimeo="325213882" data-title="Pedram Karimi F/W 15">
         <img class="video-thumb" src="https://vumbnail.com/325213882.jpg" alt="Pedram Karimi F/W 15">
         <div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div>
-        <div class="video-info"><div class="video-info-title">Pedram Karimi F/W 15</div><div class="video-info-director"></div></div>
+        <div class="video-info">
+          <div class="video-info-title">Pedram Karimi F/W 15</div>
+          <div class="video-info-director"><em>court-métrage</em> · Dominique Loubier · 2015</div>
+        </div>
       </div>
 
-      <div class="video-item" data-vimeo="322822371" data-title="Destrier" data-director="">
+      <div class="video-item" data-vimeo="322822371" data-title="Destrier">
         <img class="video-thumb" src="https://vumbnail.com/322822371.jpg" alt="Destrier">
         <div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div>
-        <div class="video-info"><div class="video-info-title">Destrier</div><div class="video-info-director"></div></div>
+        <div class="video-info">
+          <div class="video-info-title">Destrier</div>
+          <div class="video-info-director"><em>court-métrage</em> · Philippe-David Gagné · 2017</div>
+        </div>
       </div>
 
-      <div class="video-item" data-vimeo="847430515" data-title="De Pierre en fille — S1" data-director="">
+      <div class="video-item" data-vimeo="847430515" data-title="De Pierre en fille — S1">
         <img class="video-thumb" src="https://vumbnail.com/847430515.jpg" alt="De Pierre en fille — S1">
         <div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div>
-        <div class="video-info"><div class="video-info-title">De Pierre en fille — S1</div><div class="video-info-director"></div></div>
+        <div class="video-info">
+          <div class="video-info-title">De Pierre en fille — S1</div>
+          <div class="video-info-director"><em>série télé</em> · Marie-Claude Blouin · 2021</div>
+        </div>
       </div>
 
-      <div class="video-item" data-vimeo="1147526260" data-title="De Pierre en fille — S2" data-director="">
+      <div class="video-item" data-vimeo="1147526260" data-title="De Pierre en fille — S2">
         <img class="video-thumb" src="https://vumbnail.com/1147526260.jpg" alt="De Pierre en fille — S2">
         <div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div>
-        <div class="video-info"><div class="video-info-title">De Pierre en fille — S2</div><div class="video-info-director"></div></div>
+        <div class="video-info">
+          <div class="video-info-title">De Pierre en fille — S2</div>
+          <div class="video-info-director"><em>série télé</em> · Marie-Claude Blouin · 2024</div>
+        </div>
       </div>
 
-      <div class="video-item" data-vimeo="662459929" data-title="L'arène — S2" data-director="">
+      <div class="video-item" data-vimeo="662459929" data-title="L'arène — S2">
         <img class="video-thumb" src="https://vumbnail.com/662459929.jpg" alt="L'arène — S2">
         <div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div>
-        <div class="video-info"><div class="video-info-title">L'arène — S2</div><div class="video-info-director"></div></div>
+        <div class="video-info">
+          <div class="video-info-title">L'arène — S2</div>
+          <div class="video-info-director"><em>série télé</em> · Jean-François Leblanc · 2020</div>
+        </div>
       </div>
 
-      <div class="video-item" data-vimeo="391422988" data-title="Fourchette — S1" data-director="">
+      <div class="video-item" data-vimeo="391422988" data-title="Fourchette — S1">
         <img class="video-thumb" src="https://vumbnail.com/391422988.jpg" alt="Fourchette — S1">
         <div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div>
-        <div class="video-info"><div class="video-info-title">Fourchette — S1</div><div class="video-info-director"></div></div>
+        <div class="video-info">
+          <div class="video-info-title">Fourchette — S1</div>
+          <div class="video-info-director"><em>série télé</em> · Catherine Therrien · 2018</div>
+        </div>
       </div>
 
-      <div class="video-item" data-vimeo="506513910" data-title="Fourchette — S2" data-director="">
+      <div class="video-item" data-vimeo="506513910" data-title="Fourchette — S2">
         <img class="video-thumb" src="https://vumbnail.com/506513910.jpg" alt="Fourchette — S2">
         <div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div>
-        <div class="video-info"><div class="video-info-title">Fourchette — S2</div><div class="video-info-director"></div></div>
+        <div class="video-info">
+          <div class="video-info-title">Fourchette — S2</div>
+          <div class="video-info-director"><em>série télé</em> · Catherine Therrien · 2019</div>
+        </div>
       </div>
 
-      <div class="video-item" data-vimeo="745398127" data-title="Raspberry Jane" data-director="">
-        <img class="video-thumb" src="https://vumbnail.com/745398127.jpg" alt="Raspberry Jane">
-        <div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div>
-        <div class="video-info"><div class="video-info-title">Raspberry Jane</div><div class="video-info-director"></div></div>
-      </div>
-
-      <div class="video-item" data-vimeo="321282188" data-title="Web Thérapie — S3" data-director="">
+      <div class="video-item" data-vimeo="321282188" data-title="Web Thérapie — S3">
         <img class="video-thumb" src="https://vumbnail.com/321282188.jpg" alt="Web Thérapie — S3">
         <div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div>
-        <div class="video-info"><div class="video-info-title">Web Thérapie — S3</div><div class="video-info-director"></div></div>
+        <div class="video-info">
+          <div class="video-info-title">Web Thérapie — S3</div>
+          <div class="video-info-director"><em>série télé</em> · Christian Laurence · 2016</div>
+        </div>
       </div>
 
-      <div class="video-item" data-vimeo="344868729" data-title="Saucisson" data-director="">
-        <img class="video-thumb" src="https://vumbnail.com/344868729.jpg" alt="Saucisson">
-        <div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div>
-        <div class="video-info"><div class="video-info-title">Saucisson</div><div class="video-info-director"></div></div>
-      </div>
-
-      <div class="video-item" data-vimeo="344854926" data-title="Encore Fiancée" data-director="">
+      <div class="video-item" data-vimeo="344854926" data-title="Encore Fiancée">
         <img class="video-thumb" src="https://vumbnail.com/344854926.jpg" alt="Encore Fiancée">
         <div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div>
-        <div class="video-info"><div class="video-info-title">Encore Fiancée</div><div class="video-info-director"></div></div>
+        <div class="video-info">
+          <div class="video-info-title">Encore Fiancée</div>
+          <div class="video-info-director"><em>court-métrage</em> · Catherine Therrien · 2016</div>
+        </div>
       </div>
-
-      <div class="video-item" data-vimeo="344866101" data-title="Chaloupe" data-director="">
-        <img class="video-thumb" src="https://vumbnail.com/344866101.jpg" alt="Chaloupe">
-        <div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div>
-        <div class="video-info"><div class="video-info-title">Chaloupe</div><div class="video-info-director"></div></div>
-      </div>
-
 
     </div>
   </section>
@@ -551,55 +652,149 @@
     </div>
     <div class="video-mosaic fade-up">
 
-      <div class="video-item" data-vimeo="322836570" data-title="Des histoires inventées" data-director="">
+      <div class="video-item" data-vimeo="322836570" data-title="Des histoires inventées">
         <img class="video-thumb" src="https://vumbnail.com/322836570.jpg" alt="Des histoires inventées">
         <div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div>
-        <div class="video-info"><div class="video-info-title">Des histoires inventées</div><div class="video-info-director"></div></div>
+        <div class="video-info">
+          <div class="video-info-title">Des histoires inventées</div>
+          <div class="video-info-director"><em>long-métrage</em> · Jean-Marc E. Roy · 2017</div>
+        </div>
       </div>
 
-      <div class="video-item" data-vimeo="1146005517" data-title="Chronique d'une ville" data-director="">
+      <div class="video-item" data-vimeo="1146005517" data-title="Chronique d'une ville">
         <img class="video-thumb" src="https://vumbnail.com/1146005517.jpg" alt="Chronique d'une ville">
         <div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div>
-        <div class="video-info"><div class="video-info-title">Chronique d'une ville</div><div class="video-info-director"></div></div>
+        <div class="video-info">
+          <div class="video-info-title">Chronique d'une ville</div>
+          <div class="video-info-director"><em>long-métrage</em> · Nadine Gomez · 2025</div>
+        </div>
       </div>
 
-      <div class="video-item" data-vimeo="391997814" data-title="La mer entre nous" data-director="">
+      <div class="video-item" data-vimeo="391997814" data-title="La mer entre nous">
         <img class="video-thumb" src="https://vumbnail.com/391997814.jpg" alt="La mer entre nous">
         <div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div>
-        <div class="video-info"><div class="video-info-title">La mer entre nous</div><div class="video-info-director"></div></div>
+        <div class="video-info">
+          <div class="video-info-title">La mer entre nous</div>
+          <div class="video-info-director"><em>long-métrage</em> · Marlene Edoyan · 2018</div>
+        </div>
       </div>
 
-      <div class="video-item" data-vimeo="1159489922" data-title="Un jour de course" data-director="">
+      <div class="video-item" data-vimeo="1159489922" data-title="Un jour de course">
         <img class="video-thumb" src="https://vumbnail.com/1159489922.jpg" alt="Un jour de course">
         <div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div>
-        <div class="video-info"><div class="video-info-title">Un jour de course</div><div class="video-info-director"></div></div>
+        <div class="video-info">
+          <div class="video-info-title">Un jour de course</div>
+          <div class="video-info-director"><em>court-métrage</em> · Philippe-David Gagné · 2022</div>
+        </div>
       </div>
 
-      <div class="video-item" data-vimeo="325207063" data-title="Dialogue" data-director="">
+      <div class="video-item" data-vimeo="325207063" data-title="Dialogue">
         <img class="video-thumb" src="https://vumbnail.com/325207063.jpg" alt="Dialogue">
         <div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div>
-        <div class="video-info"><div class="video-info-title">Dialogue</div><div class="video-info-director"></div></div>
+        <div class="video-info">
+          <div class="video-info-title">Dialogue</div>
+          <div class="video-info-director"><em>court-métrage</em> · Philippe-David Gagné · 2015</div>
+        </div>
       </div>
 
-      <div class="video-item" data-vimeo="843046157" data-title="Saratoga" data-director="">
+      <div class="video-item" data-vimeo="843046157" data-title="Saratoga">
         <img class="video-thumb" src="https://vumbnail.com/843046157.jpg" alt="Saratoga">
         <div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div>
-        <div class="video-info"><div class="video-info-title">Saratoga</div><div class="video-info-director"></div></div>
+        <div class="video-info">
+          <div class="video-info-title">Saratoga</div>
+          <div class="video-info-director"><em>court-métrage</em> · Nadine Gomez · 2020</div>
+        </div>
       </div>
 
-      <div class="video-item" data-vimeo="844986192" data-title="Close-up" data-director="">
+      <div class="video-item" data-vimeo="844986192" data-title="Close-up">
         <img class="video-thumb" src="https://vumbnail.com/844986192.jpg" alt="Close-up">
         <div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div>
-        <div class="video-info"><div class="video-info-title">Close-up</div><div class="video-info-director"></div></div>
+        <div class="video-info">
+          <div class="video-info-title">Close-up</div>
+          <div class="video-info-director"><em>court-métrage</em> · Jean-Marc E. Roy · 2016</div>
+        </div>
       </div>
 
-      <div class="video-item" data-vimeo="843061571" data-title="Nitrate" data-director="">
+      <div class="video-item" data-vimeo="843061571" data-title="Nitrate">
         <img class="video-thumb" src="https://vumbnail.com/843061571.jpg" alt="Nitrate">
         <div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div>
-        <div class="video-info"><div class="video-info-title">Nitrate</div><div class="video-info-director"></div></div>
+        <div class="video-info">
+          <div class="video-info-title">Nitrate</div>
+          <div class="video-info-director"><em>court-métrage</em> · Yousra Bensiane · 2019</div>
+        </div>
       </div>
 
+      <div class="video-item" data-youtube="wKavfuOIPVA" data-title="Avant la nuit">
+        <img class="video-thumb" src="https://img.youtube.com/vi/wKavfuOIPVA/hqdefault.jpg" alt="Avant la nuit">
+        <div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div>
+        <div class="video-info">
+          <div class="video-info-title">Avant la nuit</div>
+          <div class="video-info-director"><em>court-métrage</em> · Nadine Gomez · 2020</div>
+        </div>
+      </div>
 
+      <div class="video-item" data-youtube="akadPh7tS9k" data-title="The gig is up">
+        <img class="video-thumb" src="https://img.youtube.com/vi/akadPh7tS9k/mqdefault.jpg" alt="The gig is up">
+        <div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div>
+        <div class="video-info">
+          <div class="video-info-title">The gig is up</div>
+          <div class="video-info-director"><em>long-métrage</em> · Shannon Walsh · 2022</div>
+        </div>
+      </div>
+
+      <div class="video-item" data-youtube="9UUnjIo2sXA" data-title="Adrianne & the Castle">
+        <img class="video-thumb" src="https://img.youtube.com/vi/9UUnjIo2sXA/mqdefault.jpg" alt="Adrianne & the Castle">
+        <div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div>
+        <div class="video-info">
+          <div class="video-info-title">Adrianne & the Castle</div>
+          <div class="video-info-director"><em>long-métrage</em> · Shannon Walsh · 2024</div>
+        </div>
+      </div>
+
+      <div class="video-item" data-vimeo="843060672" data-title="Fissure">
+        <img class="video-thumb" src="https://vumbnail.com/843060672.jpg" alt="Fissure">
+        <div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div>
+        <div class="video-info">
+          <div class="video-info-title">Fissure</div>
+          <div class="video-info-director"><em>court-métrage</em> · Eli Jean Tahchi · 2019</div>
+        </div>
+      </div>
+
+      <div class="video-item" data-youtube="3WUv8EJMYNc" data-title="Le fond de l'air">
+        <img class="video-thumb" src="https://img.youtube.com/vi/3WUv8EJMYNc/hqdefault.jpg" alt="Le fond de l'air">
+        <div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div>
+        <div class="video-info">
+          <div class="video-info-title">Le fond de l'air</div>
+          <div class="video-info-director"><em>long-métrage</em> · Simon Beaulieu · 2019</div>
+        </div>
+      </div>
+
+      <div class="video-item" data-youtube="MLxvR-UNz68" data-title="Invisible essence">
+        <img class="video-thumb" src="https://img.youtube.com/vi/MLxvR-UNz68/mqdefault.jpg" alt="Invisible essence">
+        <div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div>
+        <div class="video-info">
+          <div class="video-info-title">Invisible essence</div>
+          <div class="video-info-director"><em>film télé</em> · Charles Officer · 2018</div>
+        </div>
+      </div>
+
+      <div class="video-item" data-vimeo="943778711" data-title="Une fois la poussière retombée">
+        <img class="video-thumb" src="https://vumbnail.com/943778711.jpg" alt="Une fois la poussière retombée">
+        <div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div>
+        <div class="video-info">
+          <div class="video-info-title">Une fois la poussière retombée</div>
+          <div class="video-info-director"><em>court-métrage</em> · Hervé Demers · 2019</div>
+        </div>
+      </div>
+
+      <div class="video-item" data-youtube="24Z-OX5rqOY" data-title="Du hockey comme dans l'temps">
+        <img class="video-thumb" src="https://img.youtube.com/vi/24Z-OX5rqOY/mqdefault.jpg" alt="Du hockey comme dans l'temps">
+        <div class="video-play-icon"><svg width="12" height="14" viewBox="0 0 12 14" fill="white"><path d="M0 0l12 7L0 14z"/></svg></div>
+        <div class="video-info">
+          <div class="video-info-title">Du hockey comme dans l'temps</div>
+          <div class="video-info-director"><em>film télé</em> · C. Laurence & S. Fortin · 2015</div>
+        </div>
+      </div>
 
     </div>
   </section>
@@ -774,6 +969,79 @@
         reel.classList.add('playing');
       });
     });
+
+    // Mobile: swipe over grid to preview, tap preview to play
+    const mobileOverlay = document.getElementById('mobileOverlay');
+    const mobilePreview = document.getElementById('mobilePreview');
+    const mobilePreviewImg = document.getElementById('mobilePreviewImg');
+    const mobilePreviewTitle = document.getElementById('mobilePreviewTitle');
+    const mobilePreviewMeta = document.getElementById('mobilePreviewMeta');
+    let previewItem = null;
+
+    function showPreview(item) {
+      if (previewItem === item) return;
+      previewItem = item;
+      const img = item.querySelector('.video-thumb');
+      mobilePreviewImg.src = img.src;
+      mobilePreviewTitle.textContent = item.dataset.title || '';
+      const dir = item.querySelector('.video-info-director');
+      mobilePreviewMeta.innerHTML = dir ? dir.innerHTML : '';
+      mobilePreview.classList.add('active');
+      mobileOverlay.classList.add('active');
+    }
+
+    function hidePreview() {
+      previewItem = null;
+      mobilePreview.classList.remove('active');
+      mobileOverlay.classList.remove('active');
+    }
+
+    function itemFromTouch(touch) {
+      const el = document.elementFromPoint(touch.clientX, touch.clientY);
+      return el ? el.closest('.video-item') : null;
+    }
+
+    if (window.innerWidth <= 600) {
+      // Touch start — show preview immediately on first touch
+      document.querySelectorAll('.video-mosaic').forEach(mosaic => {
+        mosaic.addEventListener('touchstart', (e) => {
+          const item = itemFromTouch(e.touches[0]);
+          if (item) { showPreview(item); e.preventDefault(); }
+        }, { passive: false });
+
+        // Slide finger — update preview to whichever thumbnail is under finger
+        mosaic.addEventListener('touchmove', (e) => {
+          const item = itemFromTouch(e.touches[0]);
+          if (item) showPreview(item);
+          e.preventDefault();
+        }, { passive: false });
+
+        // Lift finger — keep preview visible, wait for tap on preview
+        mosaic.addEventListener('touchend', (e) => {
+          e.preventDefault();
+        }, { passive: false });
+      });
+
+      // Tap on preview card — open video
+      mobilePreview.addEventListener('click', () => {
+        if (!previewItem) return;
+        const id = previewItem.dataset.vimeo;
+        const ytId = previewItem.dataset.youtube;
+        hidePreview();
+        if (id || ytId) {
+          lightboxFrame.src = ytId
+            ? `https://www.youtube.com/embed/${ytId}?autoplay=1`
+            : `https://player.vimeo.com/video/${id}?autoplay=1`;
+          lightboxTitle.textContent = previewItem.dataset.title || '';
+          lightboxDirector.textContent = '';
+          lightbox.classList.add('open');
+          document.body.style.overflow = 'hidden';
+        }
+      });
+
+      // Tap overlay — dismiss preview
+      mobileOverlay.addEventListener('click', hidePreview);
+    }
 
     // Mobile: fade nav-logo in as user scrolls past the big name
     const navLogo = document.querySelector('.nav-logo');
