@@ -732,12 +732,14 @@
     const bannerVideos = ['889238825', '848482444'];
     let bannerIndex = 0;
     const bannerIframe = document.getElementById('bannerIframe');
-    if (bannerIframe) {
-      const bannerPlayer = new Vimeo.Player(bannerIframe);
-      bannerPlayer.on('ended', () => {
-        bannerIndex = (bannerIndex + 1) % bannerVideos.length;
-        bannerIframe.src = `https://player.vimeo.com/video/${bannerVideos[bannerIndex]}?autoplay=1&muted=1&background=1&dnt=1`;
-      });
+    if (bannerIframe && window.getComputedStyle(bannerIframe).display !== 'none') {
+      try {
+        const bannerPlayer = new Vimeo.Player(bannerIframe);
+        bannerPlayer.on('ended', () => {
+          bannerIndex = (bannerIndex + 1) % bannerVideos.length;
+          bannerIframe.src = `https://player.vimeo.com/video/${bannerVideos[bannerIndex]}?autoplay=1&muted=1&background=1&dnt=1`;
+        });
+      } catch(e) {}
     }
 
     let lang = 'fr';
