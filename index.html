@@ -728,11 +728,12 @@
 
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://player.vimeo.com/api/player.js"></script>
   <script>
+  try {
     // Banner: alternate fiction → commercial → fiction → ... on loop
     const bannerVideos = ['889238825', '848482444'];
     let bannerIndex = 0;
     const bannerIframe = document.getElementById('bannerIframe');
-    if (bannerIframe && window.getComputedStyle(bannerIframe).display !== 'none') {
+    if (bannerIframe) {
       try {
         const bannerPlayer = new Vimeo.Player(bannerIframe);
         bannerPlayer.on('ended', () => {
@@ -746,7 +747,7 @@
     const langToggle = document.getElementById('langToggle');
     function setLang(l) {
       lang = l;
-      langToggle.textContent = lang === 'fr' ? 'EN' : 'FR';
+      if (langToggle) langToggle.textContent = lang === 'fr' ? 'EN' : 'FR';
       document.querySelectorAll('[data-fr]').forEach(el => {
         if (!el.classList.contains('lang-fr') && !el.classList.contains('lang-en'))
           el.textContent = lang === 'fr' ? el.dataset.fr : el.dataset.en;
@@ -754,7 +755,7 @@
       document.querySelectorAll('.lang-fr').forEach(el => el.style.display = lang === 'fr' ? '' : 'none');
       document.querySelectorAll('.lang-en').forEach(el => el.style.display = lang === 'en' ? '' : 'none');
     }
-    langToggle.addEventListener('click', () => setLang(lang === 'fr' ? 'en' : 'fr'));
+    if (langToggle) langToggle.addEventListener('click', () => setLang(lang === 'fr' ? 'en' : 'fr'));
     setLang('fr');
 
     const lightbox = document.getElementById('lightbox');
@@ -763,7 +764,6 @@
     const lightboxDirector = document.getElementById('lightboxDirector');
     const lightboxClose = document.getElementById('lightboxClose');
 
-    // YouTube video IDs that don't allow embedding — open in new tab instead
     const ytNoEmbed = new Set(['wKavfuOIPVA','akadPh7tS9k','9UUnjIo2sXA','3WUv8EJMYNc','MLxvR-UNz68','24Z-OX5rqOY']);
 
     document.querySelectorAll('.video-item').forEach(item => {
@@ -786,11 +786,10 @@
     });
 
     function closeLightbox() { lightbox.classList.remove('open'); lightboxFrame.src = ''; document.body.style.overflow = ''; }
-    lightboxClose.addEventListener('click', closeLightbox);
+    if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
     lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 
-    // Featured reels — load thumbnail, play on click
     document.querySelectorAll('.featured-reel[data-vimeo]').forEach(reel => {
       const id = reel.dataset.vimeo;
       const thumb = reel.querySelector('.featured-reel-thumb');
@@ -806,7 +805,6 @@
       });
     });
 
-    // Mobile: fade nav-logo in as user scrolls past the big name
     const navLogo = document.querySelector('.nav-logo');
     const heroName = document.querySelector('.hero-name');
     if (navLogo && heroName) {
@@ -816,10 +814,6 @@
       }, { passive: true });
     }
 
-      // Special case: override thumbnail for specific videos after fetch
-      const thumbOverrides = {
-        '33657468': 'thumbnail_medium' // Use medium thumb for Nostradamos (different frame)
-      };
     document.querySelectorAll('.video-item[data-vimeo]').forEach(item => {
       const id = item.dataset.vimeo;
       const img = item.querySelector('.video-thumb');
@@ -827,7 +821,6 @@
         .then(r => r.json())
         .then(data => {
           if (data[0]) {
-            // Skip Nostradamos — has a custom embedded thumbnail
             if (id === '33657468') return;
             const thumb = data[0].thumbnail_large;
             if (thumb) img.src = thumb;
@@ -846,6 +839,7 @@
     }, { threshold: 0.06 });
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
     document.querySelector('.hero-identity').classList.add('visible');
+  } catch(e) { console.error('Site JS error:', e); }
   </script>
 </body>
 </html>
