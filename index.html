@@ -806,16 +806,16 @@
     });
 
     const navLogo = document.querySelector('.nav-logo');
-    const heroName = document.querySelector('.hero-name');
-    if (navLogo && heroName) {
+    const heroIdentity = document.querySelector('.hero-identity');
+    if (navLogo && heroIdentity) {
       const updateNavLogo = () => {
-        const nameBottom = heroName.getBoundingClientRect().bottom;
-        const isPastName = nameBottom < 60;
-        navLogo.style.opacity = isPastName ? '1' : '0';
-        navLogo.style.pointerEvents = isPastName ? 'auto' : 'none';
+        const identityBottom = heroIdentity.getBoundingClientRect().bottom;
+        const isPastIdentity = identityBottom < 0;
+        navLogo.style.opacity = isPastIdentity ? '1' : '0';
+        navLogo.style.pointerEvents = isPastIdentity ? 'auto' : 'none';
       };
       window.addEventListener('scroll', updateNavLogo, { passive: true });
-      updateNavLogo(); // run once on load
+      updateNavLogo();
     }
 
     document.querySelectorAll('.video-item[data-vimeo]').forEach(item => {
