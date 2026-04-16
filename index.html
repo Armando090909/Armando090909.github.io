@@ -808,10 +808,14 @@
     const navLogo = document.querySelector('.nav-logo');
     const heroName = document.querySelector('.hero-name');
     if (navLogo && heroName) {
-      window.addEventListener('scroll', () => {
+      const updateNavLogo = () => {
         const nameBottom = heroName.getBoundingClientRect().bottom;
-        navLogo.style.opacity = nameBottom < 60 ? '1' : '0';
-      }, { passive: true });
+        const isPastName = nameBottom < 60;
+        navLogo.style.opacity = isPastName ? '1' : '0';
+        navLogo.style.pointerEvents = isPastName ? 'auto' : 'none';
+      };
+      window.addEventListener('scroll', updateNavLogo, { passive: true });
+      updateNavLogo(); // run once on load
     }
 
     document.querySelectorAll('.video-item[data-vimeo]').forEach(item => {
